@@ -11,7 +11,8 @@ const PATTERN_EXAMPLES = [
   { pattern: 'date', icon: '📅', example: 'DD/MM/YYYY (25/12/2024)' },
   { pattern: 'url', icon: '🔗', example: 'https://...' },
   { pattern: 'plate', icon: '🚗', example: 'ABC-123, HLQ-75E' },
-  { pattern: 'document_id', icon: '🪪', example: 'CC1006538374' }
+  { pattern: 'document_id', icon: '🪪', example: 'CC1006538374' },
+  { pattern: 'password', icon: '🔐', example: 'Pass123@' }
 ];
 
 export function PatternSearch() {

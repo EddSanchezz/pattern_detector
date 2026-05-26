@@ -86,12 +86,11 @@ export function FormValidation() {
   useEffect(() => {
     for (const field of FORM_FIELDS) {
       const debouncedValue = debouncedValues[field.name];
-      if (debouncedValue && debouncedValue !== values[field.name]) {
-        // Only validate if debounced value differs from current value (indicating user stopped typing)
+      if (debouncedValue && debouncedValue.length > 0) {
         validateFieldAsync(field.name, field.pattern, debouncedValue);
       }
     }
-  }, [debouncedValues, values, validateFieldAsync]);
+  }, [debouncedValues, validateFieldAsync]);
 
   const handleChange = useCallback((fieldName, fieldValue) => {
     setValues((prev) => ({ ...prev, [fieldName]: fieldValue }));
