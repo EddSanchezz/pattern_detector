@@ -12,7 +12,8 @@ const FORM_FIELDS = [
   { name: 'date', label: 'Fecha', pattern: 'date', placeholder: 'DD/MM/YYYY' },
   { name: 'url', label: 'URL', pattern: 'url', placeholder: 'https://ejemplo.com' },
   { name: 'plate', label: 'Placa de vehículo', pattern: 'plate', placeholder: 'ABC-1234' },
-  { name: 'document_id', label: 'Documento ID', pattern: 'document_id', placeholder: 'CC123456789' }
+  { name: 'document_id', label: 'Documento ID', pattern: 'document_id', placeholder: 'CC123456789' },
+  { name: 'password', label: 'Contraseña', pattern: 'password', placeholder: 'Min 8 caracteres, mayúscula, número, carácter especial' }
 ];
 
 export function FormValidation() {
@@ -22,7 +23,8 @@ export function FormValidation() {
     date: '',
     url: '',
     plate: '',
-    document_id: ''
+    document_id: '',
+    password: ''
   });
 
   const [statuses, setStatuses] = useState({
@@ -31,7 +33,8 @@ export function FormValidation() {
     date: null,
     url: null,
     plate: null,
-    document_id: null
+    document_id: null,
+    password: null
   });
 
   const [errors, setErrors] = useState({});
@@ -44,6 +47,7 @@ export function FormValidation() {
   const debouncedUrl = useDebounce(values.url, 300);
   const debouncedPlate = useDebounce(values.plate, 300);
   const debouncedDocumentId = useDebounce(values.document_id, 300);
+  const debouncedPassword = useDebounce(values.password, 300);
 
   const debouncedValues = useMemo(() => ({
     email: debouncedEmail,
@@ -51,8 +55,9 @@ export function FormValidation() {
     date: debouncedDate,
     url: debouncedUrl,
     plate: debouncedPlate,
-    document_id: debouncedDocumentId
-  }), [debouncedEmail, debouncedPhone, debouncedDate, debouncedUrl, debouncedPlate, debouncedDocumentId]);
+    document_id: debouncedDocumentId,
+    password: debouncedPassword
+  }), [debouncedEmail, debouncedPhone, debouncedDate, debouncedUrl, debouncedPlate, debouncedDocumentId, debouncedPassword]);
 
   const validateFieldAsync = useCallback(async (fieldName, fieldPattern, fieldValue) => {
     if (!fieldValue.trim()) {

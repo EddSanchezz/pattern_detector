@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { searchPatterns } from '../services/api';
 
-const ALL_PATTERNS = ['email', 'phone', 'date', 'url', 'plate', 'document_id'];
+const ALL_PATTERNS = ['email', 'phone', 'date', 'url', 'plate', 'document_id', 'password'];
 
 export function usePatternSearch() {
   const [text, setText] = useState('');

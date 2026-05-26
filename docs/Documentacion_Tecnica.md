@@ -292,6 +292,40 @@ cd backend
 python -m pytest tests/ -v
 ```
 
+### 7.3 Tabla de Casos de Prueba
+
+| ID | Patrón | Entrada | Resultado Esperado | Descripción |
+|----|--------|---------|-------------------|-------------|
+| TC001 | email | edwar5020@gmail.com | Válido | Email estándar |
+| TC002 | email | invalidemail | Inválido | Sin @ |
+| TC003 | email | test@ | Inválido | Sin dominio |
+| TC004 | email | test@example | Inválido | Sin TLD |
+| TC005 | phone | 3217539293 | Válido | Teléfono móvil colombiano |
+| TC006 | phone | +57 3001234567 | Válido | Formato internacional |
+| TC007 | phone | 123 | Inválido | Muy corto |
+| TC008 | phone | abc | Inválido | Letras |
+| TC009 | date | 25/12/2024 | Válido | Formato DD/MM/YYYY |
+| TC010 | date | 25-12-2024 | Válido | Formato DD-MM-YYYY |
+| TC011 | date | 32/12/2024 | Inválido | Día inválido |
+| TC012 | date | 2024-12-25 | Inválido | Formato no soportado |
+| TC013 | url | https://google.com | Válido | HTTPS |
+| TC014 | url | http://test.org/path | Válido | Con ruta |
+| TC015 | url | www.example.com | Válido | www prefix |
+| TC016 | plate | ABC-123 | Válido | Formato antiguo |
+| TC017 | plate | ABC-12D | Válido | Formato nuevo |
+| TC018 | plate | abc-123 | Inválido | Minúsculas |
+| TC019 | plate | ABC123 | Inválido | Sin guión |
+| TC020 | document_id | CC123456789 | Válido | CC + número |
+| TC021 | document_id | NIT9876543 | Válido | NIT + número |
+| TC022 | document_id | 12345678 | Válido | Número bare (6-10 dígitos) |
+| TC023 | password | Password123! | Válido | Cumple todos los requisitos |
+| TC024 | password | Pass1! | Inválido | Menos de 8 caracteres |
+| TC025 | password | password123! | Inválido | Sin mayúscula |
+| TC026 | password | PASSWORD123! | Inválido | Sin minúscula |
+| TC027 | password | PasswordABC! | Inválido | Sin número |
+| TC028 | password | Password123 | Inválido | Sin carácter especial |
+| TC029 | password | MyP@ssw0rd!2024 | Válido | Contraseña compleja |
+
 ---
 
 ## 8. Limitaciones y Trabajo Futuro

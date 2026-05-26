@@ -1,7 +1,7 @@
 from .automaton import MatchResult
 from .patterns import (
     EmailAutomaton, PhoneAutomaton, DateAutomaton,
-    URLAutomaton, PlateAutomaton, DocumentAutomaton
+    URLAutomaton, PlateAutomaton, DocumentAutomaton, PasswordAutomaton
 )
 
 
@@ -14,6 +14,7 @@ class PatternMatcher:
             "url": URLAutomaton(),
             "plate": PlateAutomaton(),
             "document_id": DocumentAutomaton(),
+            "password": PasswordAutomaton(),
         }
 
     def search(self, text: str, pattern_names: list) -> dict:

@@ -291,6 +291,36 @@ class PlateAutomaton(PatternAutomaton):
         return results
 
 
+class PasswordAutomaton(PatternAutomaton):
+    def __init__(self):
+        super().__init__("password")
+
+    def _is_valid_password(self, password: str) -> bool:
+        if len(password) < 8:
+            return False
+        has_upper = any(c.isupper() for c in password)
+        has_lower = any(c.islower() for c in password)
+        has_digit = any(c.isdigit() for c in password)
+        has_special = any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?" for c in password)
+        return has_upper and has_lower and has_digit and has_special
+
+    def process(self, text: str) -> list[MatchResult]:
+        results = []
+        i = 0
+        while i < len(text):
+            start = i
+            j = i
+            while j < len(text) and text[j] not in " \t\n":
+                j += 1
+            candidate = text[start:j]
+            if len(candidate) >= 8 and self._is_valid_password(candidate):
+                results.append(MatchResult(value=candidate, start=start, end=j, pattern=self.pattern_name))
+                i = j
+            else:
+                i += 1
+        return results
+
+
 class DocumentAutomaton(PatternAutomaton):
     def __init__(self):
         super().__init__("document_id")

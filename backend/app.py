@@ -13,7 +13,8 @@ PATTERN_DESCRIPTIONS = {
     "date": "Fecha (día/mes/año)",
     "url": "Dirección URL web",
     "plate": "Placa de vehículo colombiano",
-    "document_id": "Tipo de documento colombiano (CC, NIT, TI, RC, PEP)"
+    "document_id": "Tipo de documento colombiano (CC, NIT, TI, RC, PEP)",
+    "password": "Contraseña segura (min 8 caracteres, mayúscula, minúscula, número, carácter especial)"
 }
 
 
